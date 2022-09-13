@@ -12,6 +12,8 @@ import { Fragment } from 'react';
 import {
   FaBehanceSquare,
   FaBuilding,
+  FaIdBadge,
+  FaWallet,
   FaDev,
   FaFacebook,
   FaGlobe,
@@ -105,6 +107,22 @@ const Details = ({ profile, loading, social, github }) => {
                 value={github.username}
                 link={`https://github.com/${github.username}`}
               />
+              {social?.corepass && (
+                <ListItem
+                  icon={<FaIdBadge className="mr-2" />}
+                  title="CorePass:"
+                  value={social.corepass.substring(0,4)+'…'+social.corepass.substring(40)}
+                  link={`corepass:${social.corepass}`}
+                />
+              )}
+              {social?.ican && (
+                <ListItem
+                  icon={<FaWallet className="mr-2" />}
+                  title="ICAN:"
+                  value={social.ican.substring(0,4)+'…'+social.ican.substring(40)}
+                  link={`payto:ican/${social.ican}`}
+                />
+              )}
               {social?.twitter && (
                 <ListItem
                   icon={<SiTwitter className="mr-2" />}

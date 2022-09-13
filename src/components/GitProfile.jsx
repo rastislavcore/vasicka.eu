@@ -72,11 +72,11 @@ const GitProfile = ({ config }) => {
           excludeRepo += `+-repo:${sanitizedConfig.github.username}/${project}`;
         });
 
-        let query = `user:${
+        let query = `author:${
           sanitizedConfig.github.username
-        }+fork:${!sanitizedConfig.github.exclude.forks}${excludeRepo}`;
+        }`;
 
-        let url = `https://api.github.com/search/repositories?q=${query}&sort=${sanitizedConfig.github.sortBy}&per_page=${sanitizedConfig.github.limit}&type=Repositories`;
+        let url = `https://api.github.com/search/commits?q=${query}&sort=${sanitizedConfig.github.sortBy}&per_page=${sanitizedConfig.github.limit}&type=Repositories`;
 
         axios
           .get(url, {
@@ -213,9 +213,7 @@ const GitProfile = ({ config }) => {
                         skeleton({ width: 'w-52', height: 'h-6' })
                       ) : (
                         <p className="font-mono text-sm">
-                          Made with{' '}
-                          <span className="text-primary">GitProfile</span> and
-                          ❤️
+                          
                         </p>
                       )}
                     </div>
@@ -244,6 +242,8 @@ GitProfile.propTypes = {
     social: PropTypes.shape({
       linkedin: PropTypes.string,
       twitter: PropTypes.string,
+      corepass: PropTypes.string,
+      ican: PropTypes.string,
       facebook: PropTypes.string,
       instagram: PropTypes.string,
       dribbble: PropTypes.string,

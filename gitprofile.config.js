@@ -3,8 +3,8 @@
 const config = {
   github: {
     username: 'raisty', // Your GitHub org/user name. (Required)
-    sortBy: 'stars', // stars | updated
-    limit: 10, // How many projects to display.
+    sortBy: 'committer-date', // stars | updated
+    limit: 20, // How many projects to display.
     exclude: {
       forks: true, // Forked projects will not be displayed if set to true.
       projects: [], // These projects will not be displayed. example: ['my-project1', 'my-project2']
@@ -12,7 +12,9 @@ const config = {
   },
   social: {
     twitter: 'RastislavGlory',
-    website: 'https://pay.btc.horse/#payto://xcb/cb2266fec7f127e2f884f0fbbcbf45dfd6fad5401922',
+    corepass: '',
+    ican: 'cb2266fec7f127e2f884f0fbbcbf45dfd6fad5401922',
+    website: 'https://github.com/raisty',
   },
   skills: [
     'Blockchain',

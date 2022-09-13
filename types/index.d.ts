@@ -50,6 +50,16 @@ export interface Social {
   twitter?: string;
 
   /**
+   * ICAN
+   */
+  ican?: string;
+
+  /**
+   * CorePass
+   */
+  corepass?: string;
+
+  /**
    * Facebook
    */
   facebook?: string;

@@ -147,6 +147,8 @@ export const sanitizeConfig = (config) => {
     social: {
       linkedin: config?.social?.linkedin,
       twitter: config?.social?.twitter,
+      corepass: config?.social?.corepass,
+      ican: config?.social?.ican,
       facebook: config?.social?.facebook,
       instagram: config?.social?.instagram,
       dribbble: config?.social?.dribbble,
