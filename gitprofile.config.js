@@ -11,7 +11,7 @@ const config = {
     },
   },
   social: {
-    twitter: 'RastislavGlory',
+    twitter: 'RastislavCore',
     corepass: '',
     ican: 'cb2266fec7f127e2f884f0fbbcbf45dfd6fad5401922',
     website: 'https://github.com/raisty',
