@@ -31,6 +31,12 @@ const Blog = ({ loading, blog, googleAnalytics }) => {
         }).then((res) => {
           setArticles(res);
         });
+      } else if (blog.source === 'cryptohub') {
+        getDevPost({
+          user: blog.username,
+        }).then((res) => {
+          setArticles(res);
+        });
       }
     }
   }, []);

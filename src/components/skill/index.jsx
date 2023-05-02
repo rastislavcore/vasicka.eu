@@ -26,7 +26,7 @@ const Skill = ({ loading, skills }) => {
                   skeleton({ width: 'w-32', height: 'h-8' })
                 ) : (
                   <span className="text-base-content opacity-70">
-                    Tech Stack
+                    Skills
                   </span>
                 )}
               </h5>
@@ -36,12 +36,14 @@ const Skill = ({ loading, skills }) => {
                 {loading
                   ? renderSkeleton()
                   : skills.map((skill, index) => (
-                      <div
-                        key={index}
-                        className="m-1 text-xs inline-flex items-center font-bold leading-sm px-3 py-1 badge-primary bg-opacity-90 rounded-full"
-                      >
-                        {skill}
-                      </div>
+                      <a href={`https://github.com/topics/${skill}`} target="_blank" rel="noreferrer" key={index}>
+                        <div
+                          key={index}
+                          className="m-1 text-xs inline-flex items-center font-bold leading-sm px-3 py-1 badge-primary bg-opacity-90 rounded-full"
+                        >
+                          {skill}
+                        </div>
+                      </a>
                     ))}
               </div>
             </div>

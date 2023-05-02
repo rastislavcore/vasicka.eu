@@ -7,6 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# lock files (excluding will cause npm ci inaccessible)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
 node_modules
 dist
 dist-ssr

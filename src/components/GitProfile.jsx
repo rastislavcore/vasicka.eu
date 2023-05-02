@@ -81,11 +81,12 @@ const GitProfile = ({ config }) => {
           excludeRepo += `+-repo:${sanitizedConfig.github.username}/${project}`;
         });
 
-        let query = `user:${
+        let query = `author:${
           sanitizedConfig.github.username
-        }+fork:${!sanitizedConfig.github.exclude.forks}${excludeRepo}`;
+        }`;
 
-        let url = `https://api.github.com/search/repositories?q=${query}&sort=${sanitizedConfig.github.sortBy}&per_page=${sanitizedConfig.github.limit}&type=Repositories`;
+        let url = `https://api.github.com/search/commits?q=${encodeURIComponent(query)}&sort=${sanitizedConfig.github.sortBy}&per_page=${sanitizedConfig.github.limit}&order=desc`;
+        //let url = `https://api.github.com/search/commits?q=${query}&sort=${sanitizedConfig.github.sortBy}&per_page=${sanitizedConfig.github.limit}&type=Repositories`;
 
         axios
           .get(url, {
@@ -170,6 +171,7 @@ const GitProfile = ({ config }) => {
                         loading={loading}
                         avatarRing={!sanitizedConfig.themeConfig.hideAvatarRing}
                         resume={sanitizedConfig.resume}
+                        publickey={sanitizedConfig.publickey}
                       />
                       <Details
                         profile={profile}
@@ -236,7 +238,7 @@ GitProfile.propTypes = {
   config: PropTypes.shape({
     github: PropTypes.shape({
       username: PropTypes.string.isRequired,
-      sortBy: PropTypes.oneOf(['stars', 'updated']),
+      sortBy: PropTypes.oneOf(['stars', 'updated', 'committer-date']),
       limit: PropTypes.number,
       exclude: PropTypes.shape({
         forks: PropTypes.bool,
@@ -253,14 +255,20 @@ GitProfile.propTypes = {
       behance: PropTypes.string,
       medium: PropTypes.string,
       dev: PropTypes.string,
+      cryptohub: PropTypes.string,
       stackoverflow: PropTypes.string,
       website: PropTypes.string,
       skype: PropTypes.string,
       telegram: PropTypes.string,
       phone: PropTypes.string,
       email: PropTypes.string,
+      corepass: PropTypes.string,
+      payto: PropTypes.string,
     }),
     resume: PropTypes.shape({
+      fileUrl: PropTypes.string,
+    }),
+    publickey: PropTypes.shape({
       fileUrl: PropTypes.string,
     }),
     skills: PropTypes.array,

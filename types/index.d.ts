@@ -254,6 +254,10 @@ export interface Resume {
   fileUrl?: string;
 }
 
+export interface Publickey {
+  fileUrl?: string;
+}
+
 export interface Config {
   /**
    * GitHub Config
@@ -269,6 +273,11 @@ export interface Config {
    * Resume
    */
   resume?: Resume;
+
+  /**
+   * Public key
+   */
+  publickey?: Publickey;
 
   /**
    * Skill list

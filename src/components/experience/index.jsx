@@ -8,7 +8,6 @@ const ListItem = ({ time, position, company, companyLink }) => (
       className="absolute w-2 h-2 bg-base-300 rounded-full border border-base-300 mt-1.5"
       style={{ left: '-4.5px' }}
     ></div>
-    <div className="my-0.5 text-xs">{time}</div>
     <h3 className="font-semibold">{position}</h3>
     <div className="mb-4 font-normal">
       <a href={companyLink} target="_blank" rel="noreferrer">
@@ -52,7 +51,7 @@ const Experience = ({ experiences, loading }) => {
                   skeleton({ width: 'w-32', height: 'h-8' })
                 ) : (
                   <span className="text-base-content opacity-70">
-                    Experience
+                    Career
                   </span>
                 )}
               </h5>

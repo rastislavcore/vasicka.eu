@@ -90,3 +90,17 @@ svg {
     opacity: 1;
   }
 }
+
+a.org {
+  margin-right: 0.3em;
+}
+a.org:last-child {
+  margin-right: 0;
+}
+
+span.org {
+  margin-right: 0.3em;
+}
+span.org:last-child {
+  margin-right: 0;
+}

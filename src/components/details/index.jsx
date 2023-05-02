@@ -14,11 +14,13 @@ import {
   FaDev,
   FaFacebook,
   FaGlobe,
+  FaIdBadge,
   FaSkype,
   FaMastodon,
   FaStackOverflow,
   FaTelegram,
   FaLinkedin,
+  FaWallet,
 } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { skeleton } from '../../helpers/utils';
@@ -95,21 +97,43 @@ const Details = ({ profile, loading, social, github }) => {
               {profile.location && (
                 <ListItem
                   icon={<MdLocationOn />}
-                  title="Based in:"
+                  title="Location:"
                   value={profile.location}
                 />
               )}
               {profile.company && (
-                <ListItem
-                  icon={<FaBuilding />}
-                  title="Company:"
-                  value={profile.company}
-                  link={
-                    isCompanyMention(profile.company.trim())
-                      ? companyLink(profile.company.trim())
-                      : null
-                  }
-                />
+                <div
+                  className="flex justify-start py-2 px-1 items-center"
+                >
+                  <div className="flex-grow font-medium gap-2 flex items-center my-1">
+                    <FaBuilding /> Organization:
+                  </div>
+                  <div
+                    className="text-sm font-normal text-right mr-2 ml-3"
+                    style={{
+                      wordBreak: 'break-word',
+                    }}
+                  >
+                  {profile.company.split(" ").map((company) => {
+                    if (isCompanyMention(company.trim())) {
+                      return (
+                        <a href={companyLink(company.trim())}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="org"
+                          key={company}
+                          >
+                          {company}
+                        </a>
+                      );
+                    } else {
+                      return (
+                        <span className="org" key={company}>{company}</span>
+                      );
+                    }
+                  })}
+                  </div>
+                </div>
               )}
               <ListItem
                 icon={<AiFillGithub />}
@@ -117,11 +141,19 @@ const Details = ({ profile, loading, social, github }) => {
                 value={github.username}
                 link={`https://github.com/${github.username}`}
               />
+              {social?.corepass && (
+                <ListItem
+                  icon={<FaIdBadge />}
+                  title="CorePass:"
+                  value={social.corepass.substring(0,4)+'…'+social.corepass.substring(-4, 4)}
+                  link={`corepass:${social.corepass}`}
+                />
+              )}
               {social?.twitter && (
                 <ListItem
                   icon={<SiTwitter />}
                   title="Twitter:"
-                  value={social.twitter}
+                  value={`@${social.twitter}`}
                   link={`https://twitter.com/${social.twitter}`}
                 />
               )}
@@ -189,6 +221,14 @@ const Details = ({ profile, loading, social, github }) => {
                   link={`https://dev.to/${social.dev}`}
                 />
               )}
+              {social?.cryptohub && (
+                <ListItem
+                  icon={<FaDev />}
+                  title="CRYPTO HUB:"
+                  value={social.cryptohub}
+                  link={`https://cryptohub.digital/${social.cryptohub}`}
+                />
+              )}
               {social?.stackoverflow && (
                 <ListItem
                   icon={<FaStackOverflow />}
@@ -234,8 +274,16 @@ const Details = ({ profile, loading, social, github }) => {
                 <ListItem
                   icon={<RiMailFill />}
                   title="Email:"
-                  value={social.email}
+                  value={social.email.split("?")[0]}
                   link={`mailto:${social.email}`}
+                />
+              )}
+              {social?.payto && (
+                <ListItem
+                  icon={<FaWallet />}
+                  title="Payto:"
+                  value={social.payto.substring(0,8)+'…'+social.payto.substr(-4, 4)}
+                  link={`payto://${social.payto}`}
                 />
               )}
             </Fragment>

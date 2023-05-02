@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
-import { AiOutlineFork, AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineComment, AiOutlineFork } from 'react-icons/ai';
 import { MdInsertLink } from 'react-icons/md';
 import { ga, languageColor, skeleton } from '../../helpers/utils';
 
@@ -89,22 +89,22 @@ const Project = ({ repo, loading, github, googleAnalytics }) => {
             <div className="flex items-center">
               <div className="card-title text-lg tracking-wide flex text-base-content opacity-60">
                 <MdInsertLink className="my-auto" />
-                <span>{item.name}</span>
+                <span>{item.repository.name}</span>
               </div>
             </div>
             <p className="mb-5 mt-1 text-base-content text-opacity-60 text-sm">
-              {item.description}
+              {item.commit.message}
             </p>
           </div>
           <div className="flex justify-between text-sm text-base-content text-opacity-60 truncate">
             <div className="flex flex-grow">
               <span className="mr-3 flex items-center">
-                <AiOutlineStar className="mr-0.5" />
-                <span>{item.stargazers_count}</span>
+                <AiOutlineComment className="mr-0.5" />
+                <span>{item.commit.comment_count}</span>
               </span>
               <span className="flex items-center">
                 <AiOutlineFork className="mr-0.5" />
-                <span>{item.forks_count}</span>
+                <span>{item.repository.full_name}</span>
               </span>
             </div>
             <div>
@@ -113,7 +113,7 @@ const Project = ({ repo, loading, github, googleAnalytics }) => {
                   className="w-3 h-3 rounded-full mr-1 opacity-60"
                   style={{ backgroundColor: languageColor(item.language) }}
                 />
-                <span>{item.language}</span>
+                <span>{item.sha.substring(0,4)+item.sha.substring(36)}</span>
               </span>
             </div>
           </div>
@@ -135,7 +135,7 @@ const Project = ({ repo, loading, github, googleAnalytics }) => {
                       skeleton({ width: 'w-40', height: 'h-8' })
                     ) : (
                       <span className="text-base-content opacity-70">
-                        GitHub Projects
+                        GitHub Commits
                       </span>
                     )}
                   </h5>
@@ -143,12 +143,12 @@ const Project = ({ repo, loading, github, googleAnalytics }) => {
                     skeleton({ width: 'w-10', height: 'h-5' })
                   ) : (
                     <a
-                      href={`https://github.com/${github.username}?tab=repositories`}
+                      href={`https://github.com/search?q=author%3A${encodeURIComponent(github.username)}&type=commits&s=${github.sortBy}&o=desc`}
                       target="_blank"
                       rel="noreferrer"
                       className="text-base-content opacity-50 hover:underline"
                     >
-                      See All
+                      Recent Commits
                     </a>
                   )}
                 </div>
