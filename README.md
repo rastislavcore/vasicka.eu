@@ -2,34 +2,26 @@
 
 **Features:**
 
-✓ [Easy to Setup](#-installation--setup)  
-✓ [30 Themes](#themes)  
-✓ [Google Analytics](#google-analytics)  
-✓ [Hotjar](#hotjar)  
-✓ [SEO](#seo)  
-✓ [Avatar and Bio](#avatar-and-bio)  
-✓ [Social Links](#social-links)  
-✓ [Skill Section](#skills)  
-✓ [Experience Section](#experience)  
-✓ [Certification Section](#certifications)  
-✓ [Education Section](#education)  
-✓ [Projects Section](#projects)  
+✓ [Easy to Setup](#-installation--setup)
+✓ [30 Themes](#themes)
+✓ [Google Analytics](#google-analytics)
+✓ [Hotjar](#hotjar)
+✓ [SEO](#seo)
+✓ [Avatar and Bio](#avatar-and-bio)
+✓ [Social Links](#social-links)
+✓ [Skill Section](#skills)
+✓ [Experience Section](#experience)
+✓ [Certification Section](#certifications)
+✓ [Education Section](#education)
+✓ [Projects Section](#projects)
 ✓ [Blog Posts Section](#blog-posts)
 
-To view a live example, **[click here](https://arifszn.github.io/gitprofile)**.
+To view a live example, **[click here](https://vasicka.eu)**.
 
 Or try it **[online](https://stackblitz.com/edit/gitprofile)**.
 
 <p align="center">
   <img src="https://arifszn.github.io/assets/img/hosted/gitprofile/themes.png" alt="Themes">
-</p>
-
-## 🎉 Thank you for the 500 ★
-
-<p>
-  <a href="https://arifszn.github.io/gitprofile">
-    <img src="https://user-images.githubusercontent.com/45073703/202119579-eae272bd-ed39-434d-9361-df25308e0691.gif" alt="Thank You" width="50%"/>
-  </a>
 </p>
 
 ## 🛠 Installation & Setup
@@ -44,14 +36,10 @@ There are three ways to use **GitProfile**. Use any.
 
 These instructions will get you a copy of the project and deploy your portfolio online!
 
-- **Fork repo:** Click [here](https://github.com/arifszn/gitprofile/fork) to fork the repo so you have your own project to customize. A "fork" is a copy of a repository.
+- **Fork repo:** Click [here](https://github.com/rastislavcore/vasicka.eu/fork) to fork the repo so you have your own project to customize. A "fork" is a copy of a repository.
 - **Rename repo:**
   - If you want to host your portfolio at `https://<USERNAME>.github.io`, rename your forked repository to `username.github.io` in GitHub, where `username` is your GitHub username (or organization name).
   - If you want to host your portfolio at `https://<USERNAME>.github.io/<REPO>` (e.g. `https://<USERNAME>.github.io/portfolio`), rename your forked repository to `<REPO>` (e.g. `portfolio`) in GitHub.
-- **Enable workflows:** Go to your repo's **Actions** tab and enable workflows.
-
-  ![Workflows](https://arifszn.github.io/assets/img/hosted/gitprofile/workflows.png)
-
 - **Base Value:** Open `vite.config.js`, and change `base`'s value.
 
   - If you are deploying to `https://<USERNAME>.github.io`, set `base` to `'/'`.
@@ -66,20 +54,16 @@ These instructions will get you a copy of the project and deploy your portfolio 
   }
   ```
 
-- **Commit the changes:** Now commit to your **main** branch with your changes. Wait a few minutes so that the CI/CD pipeline can publish your website to GitHub Pages. You can check the progress in the [Actions](https://github.com/arifszn/gitprofile/actions) tab.
+- **Commit the changes:** Now commit to your **main** branch with your changes.
 
-Your portfolio website will be live shortly. Any time you commit a change to the **main** branch, the website will be automatically updated. If you face any issue viewing the website, double-check the `base` value in the `vite.config.js` file. Also, check if **Source** is set to **GitHub Actions** in **Settings** ➜ **Pages** ➜ **Build and deployment**.
-
-If you wish to add a custom domain, no CNAME file is required. Just add it to your repo's **Settings** ➜ **Pages** ➜ **Custom domain**.
-
-As this is a Vite project, you can also host your website to Netlify, Vercel, Heroku, or other popular services. Please refer to this [doc](https://vitejs.dev/guide/static-deploy.html) for a detailed deployment guide to other services.
+- **Deploy:** Configure the Cloudflare Pages to deploy your portfolio. Click [here](https://developers.cloudflare.com/pages/getting-started) to learn how to deploy your portfolio using Cloudflare Pages. Alternatively, you can use [Vercel](https://vercel.com/) to deploy your portfolio.
 
 ### Setting up locally
 
 - Clone the project and change directory.
 
   ```shell
-  git clone https://github.com/arifszn/gitprofile.git
+  git clone https://github.com/rastislavcore/vasicka.eu.git
   cd gitprofile
   ```
 
@@ -99,16 +83,16 @@ As this is a Vite project, you can also host your website to Netlify, Vercel, He
 
 ### Installing as package
 
-You can also use **GitProfile** by installing as an NPM package. First Install **GitProfile** via <a href="https://www.npmjs.com/package/@arifszn/gitprofile">NPM</a>.
+You can also use **GitProfile** by installing as an NPM package. First Install **GitProfile** via NPM.
 
 ```sh
-npm install @arifszn/gitprofile
+npm install rastislavcore/vasicka.eu#main
 ```
 
-Or via <a href="https://yarnpkg.com/package/@arifszn/gitprofile">Yarn</a>.
+Or via Yarn.
 
 ```sh
-yarn add @arifszn/gitprofile
+yarn add rastislavcore/vasicka.eu#main
 ```
 
 Then, import the package, import and style and provide the config.
@@ -122,7 +106,7 @@ function App() {
     <GitProfile
       config={{
         github: {
-          username: 'arifszn',
+          username: 'rastislavcore',
         },
       }}
     />
@@ -558,7 +542,7 @@ const config = {
 
 ### Blog Posts
 
-If you have [medium](https://medium.com) or [dev](https://dev.to) account, you can show your recent blog posts in here just by providing your medium/dev username. You can limit how many posts to display (Max is `10`).
+If you have [medium](https://medium.com) or [dev](https://dev.to) or [CRYPTO HUB](https://) account, you can show your recent blog posts in here just by providing your medium/dev username. You can limit how many posts to display (Max is `10`).
 
 ```js
 // gitprofile.config.js
@@ -572,21 +556,12 @@ const config = {
 };
 ```
 
-![Blog](https://arifszn.github.io/assets/img/hosted/gitprofile/blog.png)
-
-The posts are fetched by [blog.js](https://github.com/arifszn/blog.js).
-
-## 💖 Support
-
-<p>You can show your support by starring this project. ★</p>
-<a href="https://github.com/arifszn/gitprofile/stargazers">
-  <img src="https://img.shields.io/github/stars/arifszn/gitprofile?style=social" alt="Github Star">
-</a>
+The posts are fetched by [blog.js](https://github.com/rastislavcore/blog.js).
 
 ## 💡 Contribute
 
-To contribute, see the [Contributing guide](https://github.com/arifszn/gitprofile/blob/main/CONTRIBUTING.md).
+To contribute, see the [Contributing guide](CONTRIBUTING.md).
 
 ## 📄 License
 
-[MIT](https://github.com/arifszn/gitprofile/blob/main/LICENSE)
+[MIT](LICENSE)
