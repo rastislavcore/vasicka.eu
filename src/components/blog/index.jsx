@@ -3,7 +3,7 @@ import { ga, skeleton } from '../../helpers/utils';
 import LazyImage from '../lazy-image';
 import PropTypes from 'prop-types';
 import { AiOutlineContainer } from 'react-icons/ai';
-import { getDevPost, getMediumPost } from '@arifszn/blog-js';
+import { getDevPost, getCryptohubPost, getMediumPost } from 'blog.js';
 import { formatDistance } from 'date-fns';
 
 const displaySection = (blog) => {
@@ -11,6 +11,16 @@ const displaySection = (blog) => {
     return true;
   } else {
     return false;
+  }
+};
+
+const getPortalLink = (blog) => {
+  if (blog.source === 'medium') {
+    return `https://medium.com/@${blog.username}`;
+  } else if (blog.source === 'dev') {
+    return `https://dev.to/${blog.username}`;
+  } else if (blog.source === 'cryptohub') {
+    return `https://cryptohub.digital/${blog.username}`;
   }
 };
 
@@ -32,7 +42,7 @@ const Blog = ({ loading, blog, googleAnalytics }) => {
           setArticles(res);
         });
       } else if (blog.source === 'cryptohub') {
-        getDevPost({
+        getCryptohubPost({
           user: blog.username,
         }).then((res) => {
           setArticles(res);
@@ -194,16 +204,28 @@ const Blog = ({ loading, blog, googleAnalytics }) => {
                 }`}
               >
                 <div className="card-body">
-                  <div className="mx-3 mb-2">
+                  <div className="mx-3 flex items-center justify-between mb-2">
                     <h5 className="card-title">
                       {loading ? (
                         skeleton({ width: 'w-28', height: 'h-8' })
                       ) : (
                         <span className="text-base-content opacity-70">
-                          Recent Posts
+                          Posts on {blog.source.toUpperCase()}
                         </span>
                       )}
                     </h5>
+                    {loading ? (
+                      skeleton({ width: 'w-10', height: 'h-5' })
+                    ) : (
+                      <a
+                        href={getPortalLink(blog)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-base-content opacity-50 hover:underline"
+                      >
+                        All Articles
+                      </a>
+                    )}
                   </div>
                   <div className="col-span-2">
                     <div className="grid grid-cols-1 gap-6">

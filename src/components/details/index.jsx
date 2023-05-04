@@ -15,6 +15,7 @@ import {
   FaFacebook,
   FaGlobe,
   FaIdBadge,
+  FaKey,
   FaSkype,
   FaMastodon,
   FaStackOverflow,
@@ -44,13 +45,13 @@ const getFormattedMastodonValue = (mastodonValue, isLink) => {
 };
 
 const ListItem = ({ icon, title, value, link, skeleton = false }) => {
+  const mailtoRegex = /^mailto:(.+)\?key=(.+)$/;
+  const isMailto = link && link.startsWith("mailto:");
+  const mailtoMatches = isMailto ? link.match(mailtoRegex) : null;
+  const decodedKeyLink = mailtoMatches ? decodeURIComponent(mailtoMatches[2]) : null;
+
   return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noreferrer"
-      className="flex justify-start py-2 px-1 items-center"
-    >
+    <div className="flex justify-start py-2 px-1 items-center">
       <div className="flex-grow font-medium gap-2 flex items-center my-1">
         {icon} {title}
       </div>
@@ -62,9 +63,28 @@ const ListItem = ({ icon, title, value, link, skeleton = false }) => {
           wordBreak: 'break-word',
         }}
       >
-        {value}
+        {link ? (
+          <>
+            {isMailto ? (
+              <div className="inline-flex space-x-2">
+                <a href={`mailto:${mailtoMatches[1]}`} target="_blank" rel="noreferrer">
+                  {value}
+                </a>
+                <a href={decodedKeyLink} target="_blank" rel="noreferrer" download>
+                  <FaKey />
+                </a>
+              </div>
+            ) : (
+              <a href={link} target="_blank" rel="noreferrer">
+                {value}
+              </a>
+            )}
+          </>
+        ) : (
+          value
+        )}
       </div>
-    </a>
+    </div>
   );
 };
 
@@ -161,7 +181,7 @@ const Details = ({ profile, loading, social, github }) => {
                 <ListItem
                   icon={<FaMastodon />}
                   title="Mastodon:"
-                  value={getFormattedMastodonValue(social.mastodon, false)}
+                  value={'@'+getFormattedMastodonValue(social.mastodon, false)}
                   link={getFormattedMastodonValue(social.mastodon, true)}
                 />
               )}
